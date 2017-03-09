@@ -1,0 +1,228 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Intro to Drupal 8</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>Introduction to Drupal 8</h1>
+					<h2>Lindsey Kopacz</h2>
+					<p>Web Producer, <em>CHIEF</em></p>
+					<a href="https://twitter.com/littlekope0903">@littlekope0903</a>
+				</section>
+				<section>
+					<a href="https://github.com/lkopacz/Intro-to-Drupal-8/blob/master/README.md">Have you set up your local instance?</a>
+				</section>
+				<section>
+					<section>
+					<h1>What is Drupal?</h1>
+					<p>Drupal is an open source Content Management System (CMS) that is used to build websites with either simple or complex content relationships.</p>
+				</section>
+				<section>
+				<h1>Drupal is a system of pages, not static pages</h1>
+				<p>Content (HTML) is stored in the database, not code. It is separated from the Presentation (CSS) and Behavioral (JavaScript) layers.</p>
+			</section>
+				</section>
+				<section>
+					<section>
+						<h1>All the Terminology!</h1>
+					</section>
+					<section>
+						<h1>Terminology (1)</h1>
+						<ul>
+							<li><strong>Node</strong>: a page that is created by a content administrator entering the content into the system. These are compromised of fields created in the <u>Content Type</u>.</li>
+							<li><strong>Content Type</strong>: You can create different types of nodes based on the need of the site. This could be News, Blogs, Partners.</li>
+						</ul>
+					</section>
+					<section>
+						<h1>Terminology (2)</h1>
+						<ul>
+							<li><strong>Taxonomy</strong>: A way of categorizing entities (nodes, users, etc).</li>
+							<li><strong>Modules</strong>: Contributed code that you can add to extend the functionality of your site. </li>
+							<li><strong>Theme</strong>: The front end layer where you define regions, add JavaScript, CSS/Sass, and Templates, </li>
+						</ul>
+					</section>
+					<section>
+						<h1>Terminology (3)</h1>
+						<ul>
+							<li><strong>Blocks</strong>: Customizable Content that can appear in a page region. IE: Contact Information Sidebar</li>
+							<li><strong>Views</strong>: Dynamic lists of content that accumulates in a highly customizable fashion. IE: A list of blog posts or a Related News Block with a similar taxonomy term.</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					Quick shout out to what's new in D8!
+					<ul>
+						<li>YAML!</li>
+						<li>[more] Intuitive File Stucture</li>
+						<li>TWIG!</li>
+						<li>OOP PHP!</li>
+						<li>Block Entities!</li>
+						<li>Configuration Management!</li>
+					</ul>
+				</section>
+				<section>
+					<section>
+						<h1>Intro to Sitebuilding<h1>
+					</section>
+					<section>
+						<h1>Creating a Content Type</h1>
+						<ol>
+							<li>Go to Structure > Content Types</li>
+							<li>You can create your own Content Type or Manipulate what exists.</li>
+							<li>Click Manage Fields on 'Article' Content Type.</li>
+							<li>Click Add Field and lets add a date field and name it Date.</li>
+							<li>Let's do Date Only and limit it to one value.</li>
+						</ol>
+					</section>
+					<section>
+						<h1>Creating a Taxonomy</h1>
+						<ol>
+							<li>Go to Structure > Taxonomy</li>
+							<li>Let's add a Taxonomy called Region and give it areas of the US.</li>
+							<li>Click on Add terms and let's add a bunch.</li>
+						</ol>
+					</section>
+					<section>
+						<h1>Add Taxonomy to Articles</h1>
+						<ol>
+							<li>Go to Structure > Content Types</li>
+							<li>Click Manage Fields on 'Article' Content Type.</li>
+							<li>Let's add a reference field to a taxonomy term and select regions.</li>
+							<li>Once we have saved this field we can reference the region of this content.</li>
+						</ol>
+					</section>
+					<section>
+						<h1>Create some Dummy Content</h1>
+						<ol>
+							<li>Go to https://www.drupal.org/project/devel and right click on the Drupal 8 tar.gz version of the module. Click Copy Link Address</li>
+							<li>Click on Extend</li>
+							<li>Click on Install New Module. Paste the link you copied in the Install From a URL field.</li>
+							<li>Go to Configuration > Development > Generate Content and let's Generate some sample articles.</li>
+						</ol>
+					</section>
+					<section>
+						<h1>Create a Dynamic News Page</h1>
+						<ol>
+							<li>Go to Structure > Views. Then Click Add New View.</li>
+							<li>View Name is News and in View Settings we want show Content of Article Type. </li>
+							<li>Check Create a Page. And for display settings we will do Unformatted List of fields. Keep everything else the same. </li>
+							<li>Click "Save and edit".</li>
+						</ol>
+					</section>
+					<section>
+						<h1>Create a Dynamic News Page (continued...)</h1>
+						<ol>
+							<li>Now over here we are going to create a view fields. Let's add the Date field that we creates and a region field.</li>
+							<li>Click save and let's look at our news page!</li>
+						</ol>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h1>Introduction to Theming</h1>
+					</section>
+					<section>
+						<h1>Creating a SubTheme</h1>
+						<ul>
+							<li>Starts with a info.yml file where you put all the information about your theme and define your regions.</li>
+							<li>Add a libraries.yml file to start adding CSS and JS</li>
+							<li>Go to Appearance to enable the new theme!<li>
+						</ul>
+					</section>
+					<section>
+						<h1>Important Keys in YML theme files</h1>
+						<ul>
+							<li>name, type, description, core, base theme, and regions.</li>
+							<li><a href="https://www.drupal.org/docs/8/theming-drupal-8/defining-a-theme-with-an-infoyml-file">Read more about these keys here.</a></li>
+						</ul>
+					</section>
+					<section>
+						<h1>TWIG Templating</h1>
+						<ul>
+							<li>First, we shall set up Twig Debug.</li>
+							<ul>
+								<li>Copy the file sites/default/default.services.yml to sites/default/services.yml</li>
+								<li>In the Drupal Site, go to Configuration > Development > Performance and Click on Clear Caches</li>
+								<li>Go back to your site, refresh the page if you haven't already and inspect element</li>
+							</ul>
+						</ul>
+					</section>
+					<section>
+						<h1>TWIG Templating</h1>
+						<ul>
+							<li>The 3 Twig Syntaxes</li>
+							<ul>
+								<li><pre>{{ say something }}</pre> IE: I want something printed.</li>
+								<li><pre>{% do something %}</pre> IE: I want to use some logic.</li>
+								<li><pre>{# comment something #}</pre> IE: I want to write comments that won't render.</li>
+							</ul>
+						</ul>
+					</section>
+					<section>
+						<h1>TWIG Templating</h1>
+						<ul>
+							<li>Create a sample template</li>
+							<ul>
+								<li>Create a templates directory in your theme folder.</li>
+								<li>Make a copy of the file in core/themes/classy/templates/layout/page.html.twig and put it in your templates folder</li>
+								<li>Clear Cache and see what is rendering for page now in the element inspector.</li>
+							</ul>
+						</ul>
+					</section>
+					<section>
+						<h1>Adding New Regions</h1>
+						<ul>
+							<li>Create a new region and render it.</li>
+							<ul>
+								<li>Add a search region in your YML file right under the Header region. Clear Cache and check out the block pages.</li>
+								<li>We now need to make sure we actually render it in the twig template.</li>
+							</ul>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<h1>Any Questions?</h1>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
